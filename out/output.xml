@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.3 on win32)" generated="20190517 00:17:45.713" rpa="false">
+<suite id="s1" name="Test-Api" source="C:\Users\andre\Downloads\testing-master\testing-master\test-robot\test-api.robot">
+<test id="s1-t1" name="Select Client With Balance">
+<kw name="Select Client With Balance" library="TestTask">
+<doc>Выбор клиента с положительным балансом и не полным набором услуг ,если его нету то он будет создан</doc>
+<msg timestamp="20190517 00:17:45.907" level="INFO">[3, 3.5]</msg>
+<status status="PASS" starttime="20190517 00:17:45.897" endtime="20190517 00:17:45.907"></status>
+</kw>
+<doc>Выбор клиента с положительным балансом и не полным набором услуг ,если его нету то он будет создан</doc>
+<status status="PASS" starttime="20190517 00:17:45.896" endtime="20190517 00:17:45.908" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Get List Services Connected Client">
+<kw name="Get List Services Connected Client">
+<kw name="Select Client With Balance" library="TestTask">
+<doc>Выбор клиента с положительным балансом и не полным набором услуг ,если его нету то он будет создан</doc>
+<assign>
+<var>${ID}</var>
+</assign>
+<msg timestamp="20190517 00:17:45.913" level="INFO">[3, 3.5]</msg>
+<msg timestamp="20190517 00:17:45.913" level="INFO">${ID} = 3</msg>
+<status status="PASS" starttime="20190517 00:17:45.912" endtime="20190517 00:17:45.913"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${ID}</arg>
+</arguments>
+<msg timestamp="20190517 00:17:45.914" level="INFO">${ID} = 3</msg>
+<status status="PASS" starttime="20190517 00:17:45.914" endtime="20190517 00:17:45.914"></status>
+</kw>
+<kw name="Req Post List Service" library="TestTask">
+<doc>Список подключенных услуг клиенту</doc>
+<arguments>
+<arg>${ID}</arg>
+</arguments>
+<msg timestamp="20190517 00:17:45.935" level="INFO">[{'cost': 1.2, 'id': 1, 'name': 'Service #1'}]</msg>
+<status status="PASS" starttime="20190517 00:17:45.914" endtime="20190517 00:17:45.935"></status>
+</kw>
+<status status="PASS" starttime="20190517 00:17:45.911" endtime="20190517 00:17:45.936"></status>
+</kw>
+<doc>Список подключенных услуг клиенту</doc>
+<status status="PASS" starttime="20190517 00:17:45.910" endtime="20190517 00:17:45.936" critical="yes"></status>
+</test>
+<test id="s1-t3" name="Get Full List Services">
+<kw name="Req Get List Service" library="TestTask">
+<doc>Полный список услуг</doc>
+<msg timestamp="20190517 00:17:45.951" level="INFO">[{'cost': 1.2, 'id': 1, 'name': 'Service #1'}, {'cost': 0.35, 'id': 2, 'name': 'Service #2'}, {'cost': 0.15, 'id': 3, 'name': 'Service #3'}, {'cost': 0.15, 'id': 4, 'name': 'Service #4'}, {'cost': 0.05, 'id': 5, 'name': 'Service #5'}]</msg>
+<status status="PASS" starttime="20190517 00:17:45.940" endtime="20190517 00:17:45.951"></status>
+</kw>
+<doc>Полный список услуг</doc>
+<status status="PASS" starttime="20190517 00:17:45.939" endtime="20190517 00:17:45.952" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Get List Unconnected Services">
+<kw name="Get List Unconnected Services">
+<kw name="List Unconnected Service" library="TestTask">
+<doc>Список неподключенных услуг клиенту</doc>
+<arguments>
+<arg>${ID}</arg>
+</arguments>
+<msg timestamp="20190517 00:17:45.989" level="INFO">[{'id': 2, 'cost': 0.35}, {'id': 3, 'cost': 0.15}, {'id': 4, 'cost': 0.15}, {'id': 5, 'cost': 0.05}]</msg>
+<status status="PASS" starttime="20190517 00:17:45.965" endtime="20190517 00:17:45.990"></status>
+</kw>
+<status status="PASS" starttime="20190517 00:17:45.964" endtime="20190517 00:17:45.990"></status>
+</kw>
+<doc>Список неподключенных услуг клиенту</doc>
+<status status="PASS" starttime="20190517 00:17:45.961" endtime="20190517 00:17:45.991" critical="yes"></status>
+</test>
+<test id="s1-t5" name="Connected Service To Client And Check">
+<kw name="Connected Service To Client And Check">
+<kw name="Client Balance" library="TestTask">
+<doc>Баланс клиента</doc>
+<arguments>
+<arg>${ID}</arg>
+</arguments>
+<assign>
+<var>${START_BALANCE}</var>
+</assign>
+<msg timestamp="20190517 00:17:45.996" level="INFO">3.5</msg>
+<msg timestamp="20190517 00:17:45.996" level="INFO">${START_BALANCE} = 3.5</msg>
+<status status="PASS" starttime="20190517 00:17:45.994" endtime="20190517 00:17:45.996"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${START_BALANCE}</arg>
+</arguments>
+<msg timestamp="20190517 00:17:45.997" level="INFO">${START_BALANCE} = 3.5</msg>
+<status status="PASS" starttime="20190517 00:17:45.996" endtime="20190517 00:17:45.997"></status>
+</kw>
+<kw name="List Unconnected Service" library="TestTask">
+<doc>Список неподключенных услуг клиенту</doc>
+<arguments>
+<arg>${ID}</arg>
+</arguments>
+<assign>
+<var>${SERVICE_ID}</var>
+</assign>
+<msg timestamp="20190517 00:17:46.017" level="INFO">[{'id': 2, 'cost': 0.35}, {'id': 3, 'cost': 0.15}, {'id': 4, 'cost': 0.15}, {'id': 5, 'cost': 0.05}]</msg>
+<msg timestamp="20190517 00:17:46.018" level="INFO">${SERVICE_ID} = 2</msg>
+<status status="PASS" starttime="20190517 00:17:45.997" endtime="20190517 00:17:46.018"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${SERVICE_ID}</arg>
+</arguments>
+<msg timestamp="20190517 00:17:46.018" level="INFO">${SERVICE_ID} = 2</msg>
+<status status="PASS" starttime="20190517 00:17:46.018" endtime="20190517 00:17:46.018"></status>
+</kw>
+<kw name="Check Status">
+<kw name="Req Post Add Service" library="TestTask">
+<doc>Подключение услуги клиенту</doc>
+<arguments>
+<arg>${ID}</arg>
+<arg>${SERVICE_ID}</arg>
+</arguments>
+<assign>
+<var>${STATUS}</var>
+</assign>
+<msg timestamp="20190517 00:17:46.030" level="INFO">${STATUS} = 202</msg>
+<status status="PASS" starttime="20190517 00:17:46.019" endtime="20190517 00:17:46.030"></status>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${STATUS}</arg>
+<arg>${OK}</arg>
+</arguments>
+<msg timestamp="20190517 00:17:46.031" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20190517 00:17:46.031" endtime="20190517 00:17:46.031"></status>
+</kw>
+<status status="PASS" starttime="20190517 00:17:46.018" endtime="20190517 00:17:46.031"></status>
+</kw>
+<kw name="Check Service In BD">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>1 min</arg>
+<arg>60 sec</arg>
+<arg>Check Connected Service</arg>
+<arg>${ID}</arg>
+<arg>${SERVICE_ID}</arg>
+</arguments>
+<assign>
+<var>${SERVICE_ID_BD}</var>
+</assign>
+<kw name="Check Connected Service" library="TestTask">
+<doc>Проверка подключенной услуги клиенту в бд</doc>
+<arguments>
+<arg>${ID}</arg>
+<arg>${SERVICE_ID}</arg>
+</arguments>
+<msg timestamp="20190517 00:17:46.035" level="FAIL">TypeError: 'NoneType' object is not subscriptable</msg>
+<status status="FAIL" starttime="20190517 00:17:46.033" endtime="20190517 00:17:46.035"></status>
+</kw>
+<kw name="Check Connected Service" library="TestTask">
+<doc>Проверка подключенной услуги клиенту в бд</doc>
+<arguments>
+<arg>${ID}</arg>
+<arg>${SERVICE_ID}</arg>
+</arguments>
+<status status="PASS" starttime="20190517 00:18:46.036" endtime="20190517 00:18:46.039"></status>
+</kw>
+<msg timestamp="20190517 00:18:46.040" level="INFO">${SERVICE_ID_BD} = 2</msg>
+<status status="PASS" starttime="20190517 00:17:46.032" endtime="20190517 00:18:46.040"></status>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${SERVICE_ID_BD}</arg>
+<arg>${SERVICE_ID}</arg>
+</arguments>
+<status status="PASS" starttime="20190517 00:18:46.041" endtime="20190517 00:18:46.042"></status>
+</kw>
+<status status="PASS" starttime="20190517 00:17:46.031" endtime="20190517 00:18:46.042"></status>
+</kw>
+<kw name="Check Connected Service With Api">
+<kw name="Check Connected Service Api" library="TestTask">
+<doc>Проверка подключенной услуги клиенту через API</doc>
+<arguments>
+<arg>${ID}</arg>
+<arg>${SERVICE_ID}</arg>
+</arguments>
+<assign>
+<var>${RESULT_CHECK}</var>
+</assign>
+<msg timestamp="20190517 00:18:46.059" level="INFO">${RESULT_CHECK} = True</msg>
+<status status="PASS" starttime="20190517 00:18:46.043" endtime="20190517 00:18:46.059"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${RESULT_CHECK}</arg>
+</arguments>
+<status status="PASS" starttime="20190517 00:18:46.059" endtime="20190517 00:18:46.060"></status>
+</kw>
+<status status="PASS" starttime="20190517 00:18:46.042" endtime="20190517 00:18:46.060"></status>
+</kw>
+<kw name="Check Correct Calculated Balance">
+<kw name="Client Balance" library="TestTask">
+<doc>Баланс клиента</doc>
+<arguments>
+<arg>${ID}</arg>
+</arguments>
+<assign>
+<var>${END_BALANCE}</var>
+</assign>
+<msg timestamp="20190517 00:18:46.062" level="INFO">3.15</msg>
+<msg timestamp="20190517 00:18:46.063" level="INFO">${END_BALANCE} = 3.15</msg>
+<status status="PASS" starttime="20190517 00:18:46.061" endtime="20190517 00:18:46.063"></status>
+</kw>
+<kw name="Cost Service" library="TestTask">
+<doc>Стоимость услуги</doc>
+<arguments>
+<arg>${SERVICE_ID}</arg>
+</arguments>
+<assign>
+<var>${COST_SERVICE}</var>
+</assign>
+<msg timestamp="20190517 00:18:46.075" level="INFO">${COST_SERVICE} = 0.35</msg>
+<status status="PASS" starttime="20190517 00:18:46.063" endtime="20190517 00:18:46.075"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${START_BALANCE} - ${COST_SERVICE}</arg>
+</arguments>
+<assign>
+<var>${CALCULATED_BALANCE}</var>
+</assign>
+<msg timestamp="20190517 00:18:46.076" level="INFO">${CALCULATED_BALANCE} = 3.15</msg>
+<status status="PASS" starttime="20190517 00:18:46.075" endtime="20190517 00:18:46.076"></status>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${END_BALANCE}</arg>
+<arg>${CALCULATED_BALANCE}</arg>
+</arguments>
+<status status="PASS" starttime="20190517 00:18:46.076" endtime="20190517 00:18:46.076"></status>
+</kw>
+<status status="PASS" starttime="20190517 00:18:46.060" endtime="20190517 00:18:46.077"></status>
+</kw>
+<status status="PASS" starttime="20190517 00:17:45.994" endtime="20190517 00:18:46.077"></status>
+</kw>
+<doc>Подключение услуги клиенту и проверка корректности подключения</doc>
+<status status="PASS" starttime="20190517 00:17:45.992" endtime="20190517 00:18:46.077" critical="yes"></status>
+</test>
+<doc>Task https://github.com/fedorovpv/testing</doc>
+<status status="PASS" starttime="20190517 00:17:45.721" endtime="20190517 00:18:46.080"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0">Critical Tests</stat>
+<stat pass="5" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="0" id="s1" name="Test-Api">Test-Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

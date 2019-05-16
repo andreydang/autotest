@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+RUN apt-get update -y && apt-get install -y \
+mc \
+build-essential \
+libsqlite3-dev \
+python-dev \
+python-pip \
+sqlite3
+COPY . /web/web
+WORKDIR /web/web
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["app.py"]
